@@ -1,0 +1,27 @@
+= form_for @tweet do |f|
+  - if @tweet.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@tweet.errors.count, "error")} prohibited this tweet from being saved:"
+      ul
+        - @tweet.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :published_at
+    = f.datetime_select :published_at
+  .field
+    = f.label :content
+    = f.text_field :content
+  .field
+    = f.label :favorite_count
+    = f.number_field :favorite_count
+  .field
+    = f.label :retweet_count
+    = f.number_field :retweet_count
+  .field
+    = f.label :original_url
+    = f.text_field :original_url
+  .field
+    = f.label :reply
+    = f.check_box :reply
+  .actions = f.submit

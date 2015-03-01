@@ -1,0 +1,31 @@
+h1 Listing tweets
+
+table
+  thead
+    tr
+      th Published at
+      th Content
+      th Favorite count
+      th Retweet count
+      th Original url
+      th Reply
+      th
+      th
+      th
+
+  tbody
+    - @tweets.each do |tweet|
+      tr
+        td = tweet.published_at
+        td = tweet.content
+        td = tweet.favorite_count
+        td = tweet.retweet_count
+        td = tweet.original_url
+        td = tweet.reply
+        td = link_to 'Show', tweet
+        td = link_to 'Edit', edit_tweet_path(tweet)
+        td = link_to 'Destroy', tweet, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Tweet', new_tweet_path

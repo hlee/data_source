@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong Published at:
+  = @tweet.published_at
+p
+  strong Content:
+  = @tweet.content
+p
+  strong Favorite count:
+  = @tweet.favorite_count
+p
+  strong Retweet count:
+  = @tweet.retweet_count
+p
+  strong Original url:
+  = @tweet.original_url
+p
+  strong Reply:
+  = @tweet.reply
+
+= link_to 'Edit', edit_tweet_path(@tweet)
+'|
+= link_to 'Back', tweets_path
