@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150301010952) do
+ActiveRecord::Schema.define(version: 20150301013632) do
 
   create_table "tweets", force: :cascade do |t|
     t.datetime "published_at"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150301010952) do
     t.boolean  "reply"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "origin_id"
   end
 
 end
