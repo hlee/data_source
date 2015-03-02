@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150301013632) do
+ActiveRecord::Schema.define(version: 20150302012617) do
+
+  create_table "contain_urls", force: :cascade do |t|
+    t.string   "url"
+    t.integer  "tweet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "contain_urls", ["tweet_id"], name: "index_contain_urls_on_tweet_id"
 
   create_table "tweets", force: :cascade do |t|
     t.datetime "published_at"
