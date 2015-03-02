@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302012617) do
+ActiveRecord::Schema.define(version: 20150302015648) do
 
   create_table "contain_urls", force: :cascade do |t|
     t.string   "url"
@@ -21,6 +21,25 @@ ActiveRecord::Schema.define(version: 20150302012617) do
   end
 
   add_index "contain_urls", ["tweet_id"], name: "index_contain_urls_on_tweet_id"
+
+  create_table "hashtag_mappings", force: :cascade do |t|
+    t.integer  "hashtag_id"
+    t.integer  "tweet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "hashtag_mappings", ["hashtag_id"], name: "index_hashtag_mappings_on_hashtag_id"
+  add_index "hashtag_mappings", ["tweet_id"], name: "index_hashtag_mappings_on_tweet_id"
+
+  create_table "hashtags", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "tweet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "hashtags", ["tweet_id"], name: "index_hashtags_on_tweet_id"
 
   create_table "tweets", force: :cascade do |t|
     t.datetime "published_at"
@@ -33,5 +52,26 @@ ActiveRecord::Schema.define(version: 20150302012617) do
     t.datetime "updated_at",     null: false
     t.string   "origin_id"
   end
+
+  create_table "user_mention_mappings", force: :cascade do |t|
+    t.integer  "user_mention_id"
+    t.integer  "tweet_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "user_mention_mappings", ["tweet_id"], name: "index_user_mention_mappings_on_tweet_id"
+  add_index "user_mention_mappings", ["user_mention_id"], name: "index_user_mention_mappings_on_user_mention_id"
+
+  create_table "user_mentions", force: :cascade do |t|
+    t.string   "screen_name"
+    t.string   "name"
+    t.string   "original_id"
+    t.integer  "tweet_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "user_mentions", ["tweet_id"], name: "index_user_mentions_on_tweet_id"
 
 end
