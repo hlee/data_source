@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302015648) do
+ActiveRecord::Schema.define(version: 20150302015821) do
 
   create_table "contain_urls", force: :cascade do |t|
     t.string   "url"
@@ -34,12 +34,9 @@ ActiveRecord::Schema.define(version: 20150302015648) do
 
   create_table "hashtags", force: :cascade do |t|
     t.string   "content"
-    t.integer  "tweet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "hashtags", ["tweet_id"], name: "index_hashtags_on_tweet_id"
 
   create_table "tweets", force: :cascade do |t|
     t.datetime "published_at"
@@ -67,11 +64,8 @@ ActiveRecord::Schema.define(version: 20150302015648) do
     t.string   "screen_name"
     t.string   "name"
     t.string   "original_id"
-    t.integer  "tweet_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  add_index "user_mentions", ["tweet_id"], name: "index_user_mentions_on_tweet_id"
 
 end

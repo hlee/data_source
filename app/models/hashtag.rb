@@ -1,3 +1,4 @@
 class Hashtag < ActiveRecord::Base
-  belongs_to :tweet
+  has_many :hashtag_mappings
+  has_many :tweets, -> {uniq}, through: :hashtag_mappings
 end
